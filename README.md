@@ -1,4 +1,7 @@
-#  Serverless && NextJS && IPFS
+#  Serverless & NextJS & IPFS
+
+Executing 'serverless' command does not go through and fails with error as below.
+
 
 ## Reproducing
 Please clone and execute the two commands 
