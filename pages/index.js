@@ -1,8 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { create as IpfsHttpClient } from "ipfs-http-client";
 
 export default function Home() {
+
+
+  const ipfsClient = IpfsHttpClient({
+    host: "ipfs.infura.io",
+    port: 5001,    
+    protocol: 'https'
+  } );
+
+
   return (
     <div className={styles.container}>
       <Head>
