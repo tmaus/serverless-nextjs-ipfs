@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  Serverless && NextJS && IPFS
 
-## Getting Started
+## Reproducing
+Please clone and execute the two commands 
 
-First, run the development server:
+### NPM build works
 
-```bash
-npm run dev
-# or
-yarn dev
+> npm run build 
+
+### Serverless build fails
+
+> serverless 
+
+### Error trace
+
+
 ```
+./node_modules/ipfs-utils/src/http/fetch.js
+Critical dependency: the request of a dependency is an expression
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Import trace for requested module:
+./node_modules/ipfs-utils/src/http.js
+./node_modules/ipfs-http-client/src/files/rm.js
+./node_modules/ipfs-http-client/src/files/index.js
+./node_modules/ipfs-http-client/src/index.js
+./pages/index.js
+./node_modules/next/dist/build/webpack/loaders/next-serverless-loader/index.js?absolute404Path=&absoluteAppPath=private-next-pages%2F_app.js&absoluteDocumentPath=next%2Fdist%2Fpages%2F_document&absoluteErrorPath=next%2Fdist%2Fpages%2F_error&absolutePagePath=private-next-pages%2Findex.js&assetPrefix=&basePath=&buildId=gQxHDOJ8lrMT5Qk0kmIBT&canonicalBase=&distDir=private-dot-next&generateEtags=true&i18n=&loadedEnvFiles=W10%3D&page=%2F&poweredByHeader=true&previewProps=%7B%22previewModeId%22%3A%22e8816b52814ebe1a5c7a63e4cd2cc76f%22%2C%22previewModeSigningKey%22%3A%22e2f4a2cb9ee7dfffa7eeadd21b586da46da0e0c6e6508763a065ff607af68dbb%22%2C%22previewModeEncryptionKey%22%3A%22ba043e56184bcb1b09ecd38aec6cab26aa6ab009dfd1b079d1c6cb017b6619dd%22%7D&runtimeConfig=!
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Error: Cannot find module './fetch.node'
+    at webpackEmptyContext (/Users/thorsten/Documents/Projects/my-app/.next/serverless/pages/index.js:11:10)
+    at Object.2548 (/Users/thorsten/Documents/Projects/my-app/.next/serverless/chunks/247.js:5107:40)
+    at __webpack_require__ (/Users/thorsten/Documents/Projects/my-app/.next/serverless/webpack-runtime.js:25:43)
+    at Object.7137 (/Users/thorsten/Documents/Projects/my-app/.next/serverless/chunks/247.js:4683:37)
+    at __webpack_require__ (/Users/thorsten/Documents/Projects/my-app/.next/serverless/webpack-runtime.js:25:43)
+    at Object.1781 (/Users/thorsten/Documents/Projects/my-app/.next/serverless/chunks/247.js:16970:12)
+    at __webpack_require__ (/Users/thorsten/Documents/Projects/my-app/.next/serverless/webpack-runtime.js:25:43)
+    at Module.3678 (/Users/thorsten/Documents/Projects/my-app/.next/serverless/pages/index.js:158:74)
+    at __webpack_require__ (/Users/thorsten/Documents/Projects/my-app/.next/serverless/webpack-runtime.js:25:43)
+    at Module.4883 (/Users/thorsten/Documents/Projects/my-app/.next/serverless/pages/index.js:85:23) {
+  code: 'MODULE_NOT_FOUND'
+}
+```
